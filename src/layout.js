@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
-import { Route, Routes, useLocation, BrowserRouter } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import Contact from "./Contact";
 import HomeEdit from "./HomeEdit";
@@ -7,8 +7,7 @@ import HomeEdit from "./HomeEdit";
 export const ContextApp = createContext();
 
 function Layout() {
-  const [selectedContact, setSelectContact] = useState(null);
-  const { path } = useLocation();
+  
   const [listItem, setListItem] = useState([]);
 
   //////////////////////////////////////////////////////////////////
@@ -69,17 +68,17 @@ function Layout() {
       .catch((error) => console.log("error", error));
   };
   /////////////////////////////////////////////////////////////////////
-  const put = (id) => {
+  const put = (id,full_name, email, address, phone) => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
     const raw = JSON.stringify({
-      full_name: "full_name",
+      full_name: full_name,
+      email: email,
       agenda_slug: "nick_robinson",
-      email: "email",
-      phone: "phone",
-      address: "address",
-      id: "id",
+      address: address,
+      phone: phone,
+    
     });
 
     const requestOptions = {
@@ -96,6 +95,8 @@ function Layout() {
       .catch((error) => console.log("error", error));
   };
 
+  
+
   ///////////////////////////////////////////////////////////////////
 
   const context = {
@@ -103,8 +104,7 @@ function Layout() {
     post,
     deleteContact,
     put,
-    selectedContact,
-    setSelectContact,
+    setListItem
   };
 
   ///////////////////////////////////////////////////////////////////
@@ -112,9 +112,8 @@ function Layout() {
     <ContextApp.Provider value={context}>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/contact/*" element={<Contact />}>
-          <Route path={":id"} element={<HomeEdit />} />
-        </Route>
+        <Route path="/contact" element={<Contact />}/>
+        <Route path="/contact/:id" element={<HomeEdit/>} />
       </Routes>
     </ContextApp.Provider>
   );

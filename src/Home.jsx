@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import "./contact.css";
-import { Link, useNavigate,useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 
@@ -8,23 +8,15 @@ import "./home.css";
 import { ContextApp } from "./layout";
 
 const Home = () => {
-  const { post, listItem} = useContext(ContextApp);
+  const { post} = useContext(ContextApp);
   const [full_name, setfull_Name] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   let navigate = useNavigate();
-const {id} = useParams()
 
-/*useEffect(() => {
-  if(id){
-    const contact = listItem.filter(c => c )
-    setfull_Name()
-    setPhone()
-    setAddress()
-    setEmail()
-  }
-}, [])*/
+
+
 
 
 

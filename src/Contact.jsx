@@ -1,15 +1,14 @@
 import React, { useContext } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ContextApp } from "./layout";
 import "./contact.css";
 
-const Contact = () => {
-  const { id } = useParams();
-  console.log({ id });
-
-  const { listItem, deleteContact, put } = useContext(ContextApp);
+const Contact = (props) => {
+  const { listItem, deleteContact } = useContext(ContextApp);
 
   let navigate = useNavigate();
+
+
 
   return (
     <div>
@@ -20,6 +19,9 @@ const Contact = () => {
       </div>
 
       {listItem.map((item, index) => {
+         const Update = (id) => {
+          navigate(`${id}`);
+        };
         return (
           <div key={index} className="contact-container">
             <div className="contact-img">
@@ -37,9 +39,8 @@ const Contact = () => {
             </div>
             <div className="contact-btns">
               <button
-                onClick={(e) => {
-                  debugger;
-                  navigate(`/contact/${item.id}`);
+                onClick={() => {
+                  Update(item.id);
                 }}
               >
                 edit
