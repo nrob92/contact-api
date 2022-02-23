@@ -1,41 +1,43 @@
 .contact-container {
   display: flex;
+  justify-content: space-around;
+  align-items: center;
   border: 1px solid rgb(197, 197, 197);
-  padding: 10px;
+  padding: 15px;
   margin: 15px;
-  width: 50%;
+  max-width: 550px;
   margin: auto;
+  border-radius: 5px;
 }
 
 .contact-img {
-  width: 350px;
-  margin: 10px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: transparent;
 }
+
 .contact-img img {
   width: 125px;
   height: 125px;
   border-radius: 62.5px;
 }
 
-
 .contact-info {
-  text-align: left;
-  width: 200px;
+  text-align: center;
 }
 
 .contact-btns {
-  margin-top: 10px;
-  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .contact-btns button {
+  border: none;
   margin: 5px;
-  float: right;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: aliceblue;
 }
 
 .contact-btn {
@@ -48,6 +50,12 @@
   border-radius: 5px;
   text-decoration: none;
 }
+.contact-btns button:first-child {
+  background-color: blue;
+}
+.contact-btns button:last-child {
+  background-color: red;
+}
 
 .contact-btn-container {
   width: 100%;
@@ -58,4 +66,7 @@
 .contact-link {
   color: black;
   text-decoration: none;
+}
+.contact-width {
+  padding: 10px;
 }

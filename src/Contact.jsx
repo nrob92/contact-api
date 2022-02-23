@@ -8,10 +8,8 @@ const Contact = (props) => {
 
   let navigate = useNavigate();
 
-
-
   return (
-    <div>
+    <div className="contact-width">
       <div className="contact-btn-container">
         <Link className="contact-btn" to="/">
           Add new contact
@@ -19,7 +17,7 @@ const Contact = (props) => {
       </div>
 
       {listItem.map((item, index) => {
-         const Update = (id) => {
+        const Update = (id) => {
           navigate(`${id}`);
         };
         return (
